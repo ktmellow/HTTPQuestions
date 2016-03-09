@@ -1,0 +1,97 @@
+URLs
+1. URL structure and definitions:
+Port - communication between computers/servers happen between ports. Data transfers to each others ports during requests and response.  
+Protocol - Method of which requests/responses, their errors/headers are exchanged over the internet. 
+Domain - address of the server.
+Anchor tag - locates place in page.
+Query string - part of the URL that doesn't fit conveniently into the hierarchical path structure. It's a list of arguments, modifying a request. 
+Path - takes you through the domain's page/file structure to locate a particular page.
+
+2. Name the parts!
+https://www.google.com/
+https = protocol
+port = 443
+www.google.com = domain name
+/ path to index page
+
+https://workbook.galvanize.com/cohorts/41/learning_experiences/367
+https = protocol
+port = 443
+workbook = subdomain
+galvanize.com = domain name
+/cohorts/41/learning_experiences/367 = path
+
+http://localhost:5000/animals/puppies?onlycute=1&size=medium#firstpuppy
+http = protocol
+localhost = domain name
+5000 = port
+/animals/puppies = path
+?onlycute=1&size=medium#firstpuppy = query string
+
+https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error
+https = protocol
+en = subdomain
+wikipedia.org = domain name
+/wiki/List_of_HTTP_status_codes = path
+#4xx_Client_error = anchor tag to part of page
+
+3. A server can use more than one port, just like my computer can.
+
+4. HTTPS v HTTP: The s is for "secure". My info is encrypted. HTTP is not encrypted.
+
+5. http://locahost:5000/animals?puppies=fido&puppies=max&puppies=moxie
+The puppies create an array of 3 puppy strings named max, moxie, and fido.
+
+
+HTTP REQUEST/RESPONSE
+1. 4 HTTP verbs: GET, POST, PUT, DELETE
+
+2. GET - request for data only
+   POST - request to add new data to server
+   PUT - request to alter existing data on server
+   DELETE - request to delete existing data on server
+
+3. Idempotent - does not change state of server, like the result of making a/many GET request.
+
+4. Status codes:
+   100 - Wait, still processing request/response. 
+   200 - OK: Request handled and server responded at least somewhat successfully.
+   300 - Redirect to elsewhere.
+   400 - Error: user request is impossible. User's fault.
+   500 - Error: something wrong with server, can't respond. Server's fault.
+5. If a server returns an http status code 301 and location to https://www.google.com, the browser is being redirected to google instead of wherever you were before. The server thinks you'll be better off googling your answer. It's like asking Matt a question.
+6. Request headers: accept, user-agent, cookie, content-type
+   Response headers: set-cookies, cache-control, content-type
+7. The first is a response because the header includes a status code: 200 OK.
+   The second is a request because it has only headers and a request HTTP verb: DELETE. 
+
+
+JSON
+1. JSON is a format for data that servers and clients use to exchange data. 
+
+2. 
+console.log(JSON.parse('{ "company" : "Github", "age": 7, "categories" : "Services,Internet,Software"}').age);
+
+3. 
+JSON.parse('{ "Companies":[ { "company": "Github", "age": 7, "categories": "Services,Internet,Software"},{ "company": "Airbnb", "age": 6, "categories": "Hotels,Travel"}, { "company": "Square", "age": 7, "categories": "FinTech,Hardware + Software,Finance"},  { "company": "Dropbox", "age": 11, "categories": "Cloud Data Services,Storage,Web Hosting"} ]}').Companies.forEach(function(val){ console.log(val.company)});
+
+4. console.log(JSON.stringify(myObj));
+
+
+MISC
+1. DNS:  is a distributed set of servers that looks up an IP address for a human readable domain, like https://www.google.com/. These IP addresses are associated with worded domain names. google.com <----> 216.58.219.228:443 (for my instance that one time)
+
+2. curl -v: verbose option that gives more info to user. Good for debugging.
+   curl -X: Gets the html page at the path provided.
+
+3.
+IP connects your computer to a server and vice versa.
+TCP uses IP to break the data into packets and retry any failed connections between ports. 
+HTTP is the application layer, a more surface layer that handles applications like request/response headers in the browser/server.  
+
+data link layer is road
+IP address
+TCP is mailman
+HTTP is mailing a letter
+
+4. HTTP doesn't break the data being sent into small packets. TCP does. 
